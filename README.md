@@ -58,41 +58,44 @@ For questions or issues please use the [Google Group](https://groups.google.com/
 # USING FOR PROJECT VISION - SAHAAY - CFI IITM
 (LISTING IMPORTANT COMMANDS RELATED TO VISION FROM https://pjreddie.com/darknet/yolo/)
 ### Run these commands in linux terminal
-git clone https://github.com/pjreddie/darknet
-cd darknet
-make
+-> git clone https://github.com/pjreddie/darknet
+-> cd darknet
+-> make
 
 ## YOLO V3 (NOT TINY)
 ### run this to download the pretrained weights
-wget https://pjreddie.com/media/files/yolov3.weights
+-> wget https://pjreddie.com/media/files/yolov3.weights
 
 #### Run the detector on image 'dog.jpg' stored in data folder --- (if image is not provided, it'll prompt you to give one dynamically)
-./darknet detect cfg/yolov3.cfg yolov3.weights data/dog.jpg
+-> ./darknet detect cfg/yolov3.cfg yolov3.weights data/dog.jpg
 
 #### This is a general command for running detection on images
-./darknet detector test cfg/coco.data cfg/yolov3.cfg yolov3.weights data/dog.jpg
+-> ./darknet detector test cfg/coco.data cfg/yolov3.cfg yolov3.weights data/dog.jpg
 
 #### Command for changing threshold hence sensitivity of detector
-./darknet detect cfg/yolov3.cfg yolov3.weights data/dog.jpg -thresh 0
+-> ./darknet detect cfg/yolov3.cfg yolov3.weights data/dog.jpg -thresh 0
 
 ## YOLO TINY
 ### Download these weights
-wget https://pjreddie.com/media/files/yolov3-tiny.weights
+-> wget https://pjreddie.com/media/files/yolov3-tiny.weights
 
 ### Run theis detector
-./darknet detect cfg/yolov3-tiny.cfg yolov3-tiny.weights data/dog.jpg
+-> ./darknet detect cfg/yolov3-tiny.cfg yolov3-tiny.weights data/dog.jpg
 
 
 ## RUNNING ON VIDEO CAM - (aka terrifying part)
 #### first compile darknet with cuda and opencv
-https://pjreddie.com/darknet/install/#cuda
+-> https://pjreddie.com/darknet/install/#cuda
 
 #### once done run this command to switch on cam
-./darknet detector demo cfg/coco.data cfg/yolov3.cfg yolov3.weights
+-> ./darknet detector demo cfg/coco.data cfg/yolov3.cfg yolov3.weights
 
 #### SOME MORE INFO
 You will need a webcam connected to the computer that OpenCV can connect to or it won't work. 
 If you have multiple webcams connected and want to select which one to use you can pass the flag -c <num> to pick (OpenCV uses webcam 0 by default).
 
 You can also run it on a video file if OpenCV can read the video:
-./darknet detector demo cfg/coco.data cfg/yolov3.cfg yolov3.weights <video file>
+
+-> ./darknet detector demo cfg/coco.data cfg/yolov3.cfg yolov3.weights <video file>
+  
+---------------------------------------X--------------------------------------------------------------------
