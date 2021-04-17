@@ -56,7 +56,9 @@ For questions or issues please use the [Google Group](https://groups.google.com/
 (LISTING IMPORTANT COMMANDS RELATED TO VISION FROM https://pjreddie.com/darknet/yolo/)
 ### Run these commands in linux terminal
 -> git clone https://github.com/pjreddie/darknet
+
 -> cd darknet
+
 -> make
 
 ## YOLO V3 (NOT TINY)
