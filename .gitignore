@@ -2,15 +2,15 @@
 *.dSYM
 *.csv
 *.out
-*.png
-*.jpg
+# *.png
+# *.jpg
 *.pyc
 old/
 mnist/
 data/
 caffe/
 grasp/
-images/
+# images/
 opencv/
 convnet/
 decaf/
@@ -27,3 +27,4 @@ Thumbs.db
 *.swp
 
 __pycache__/
+yolov3.weights
