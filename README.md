@@ -66,10 +66,10 @@ The ultimate goal is to make the life of the visually impaired easier by assisti
 
 3. **Real-Time Detection on a Webcam**
     -  To run detection on the input from a webcam, we will need to compile Darknet with [CUDA and OpenCV](https://pjreddie.com/darknet/install/#cuda). Then run the command:
-      ```sh
-      ./Project-Vision detector demo cfg/coco.data cfg/yolov3.cfg yolov3.weights
-      ```
-      YOLO will display the current FPS and predicted classes as well as the image with bounding boxes drawn on top of it.
+       ```sh
+       ./Project-Vision detector demo cfg/coco.data cfg/yolov3.cfg yolov3.weights
+       ```
+       YOLO will display the current FPS and predicted classes as well as the image with bounding boxes drawn on top of it.
 
  
 # Important Links
