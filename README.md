@@ -32,7 +32,7 @@ The ultimate goal is to make the life of the visually impaired easier by assisti
 <a href="https://techhd.herokuapp.com/"><img src="images/ppt7.png" width="300"></a>
 
 
-# Detection Using A Pre-Trained Model
+# Object Detection Using A Pre-Trained Model
 1. **Darknet Setup on Jetson Nano**
     - Clone this repository into local system and change the directory.
       ```sh
@@ -77,7 +77,7 @@ The ultimate goal is to make the life of the visually impaired easier by assisti
 **View the glimpse of our project on Youtube : https://youtu.be/acc7wHFKoWU**
 
 # Team Members
-Team Sahaay, Center For Innovation, IIT Madras
+Team Sahaay(Social Innovation Club), Center For Innovation, IIT Madras
 1. **Vinayak Nishant Gudipaty**, 2nd year Electrical, IIT Madras
 2. **Yogesh Agarwala**, 2nd year Electrical, IIT Madras
 3. **Harshit Raj**, 2nd year Mechanical, IIT Madras
