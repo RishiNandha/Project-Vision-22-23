@@ -1,45 +1,41 @@
-![Darknet Logo](http://pjreddie.com/media/files/darknet-black-small.png)
-
-# Darknet #
-Darknet is an open source neural network framework written in C and CUDA. It is fast, easy to install, and supports CPU and GPU computation.
-
-**Discord** invite link for for communication and questions: https://discord.gg/zSq8rtW
-
-## Scaled-YOLOv4: 
-
-* **paper:** https://arxiv.org/abs/2011.08036
-
-* **source code - Pytorch (use to reproduce results):** https://github.com/WongKinYiu/ScaledYOLOv4
-
-* **source code - Darknet:** https://github.com/AlexeyAB/darknet
-
-* **Medium:** https://alexeyab84.medium.com/scaled-yolo-v4-is-the-best-neural-network-for-object-detection-on-ms-coco-dataset-39dfa22fa982?source=friends_link&sk=c8553bfed861b1a7932f739d26f487c8
-
-## YOLOv4:
-
-* **paper:** https://arxiv.org/abs/2004.10934
-
-* **source code:** https://github.com/AlexeyAB/darknet
-
-* **Wiki:** https://github.com/AlexeyAB/darknet/wiki
-
-* **useful links:** https://medium.com/@alexeyab84/yolov4-the-most-accurate-real-time-neural-network-on-ms-coco-dataset-73adfd3602fe?source=friends_link&sk=6039748846bbcf1d960c3061542591d7
-
-For more information see the [Darknet project website](http://pjreddie.com/darknet).
-
-For questions or issues please use the [Google Group](https://groups.google.com/forum/#!forum/darknet).
-
-![scaled_yolov4](https://user-images.githubusercontent.com/4096485/112776361-281d8380-9048-11eb-8083-8728b12dcd55.png) AP50:95 - FPS (Tesla V100) Paper: https://arxiv.org/abs/2011.08036
-
-----
-
-![YOLOv4Tiny](https://user-images.githubusercontent.com/4096485/101363015-e5c21200-38b1-11eb-986f-b3e516e05977.png)
-
-----
-
-![YOLOv4](https://user-images.githubusercontent.com/4096485/90338826-06114c80-dff5-11ea-9ba2-8eb63a7409b3.png)
+# [Project Vision: Rediscovering Mobility For Blind](https://youtu.be/acc7wHFKoWU) 
 
 
-----
+**View on Youtube : https://youtu.be/acc7wHFKoWU**
 
-![OpenCV_TRT](https://user-images.githubusercontent.com/4096485/90338805-e5e18d80-dff4-11ea-8a68-5710956256ff.png)
+<a href="https://youtu.be/acc7wHFKoWU"><img src="images/intro.jpg"></a>
+
+
+# Aim:
+To make an Electronic Travel Aid(ETA) for visually impaired.
+# Why?
+Independent mobility for a visually challenged person is a day-to-day problem. It is difficult for them to determine a safe path without colliding with over-hanging and protruding objects. **Project VISION** is an attempt to solve this very problem using **computer vision and deep learning technology**.<br>
+
+# How?
+ The idea is to develop an **Electronic Travel Aid(ETA)** that will act like artificial eyes for the blind and convey information regarding any obstacle on the user's **fingertip**. <br>
+The ultimate goal is to make the life of the visually impaired easier by assisting them to move around and cope with the busy world.
+
+<a href="https://youtu.be/acc7wHFKoWU"><img src="images/idea.jpg"></a>
+
+## 1. Object Detection from Live Camera Feed
+<a href="https://techhd.herokuapp.com/"><img src="images/ppt1.jpg" width="300"></a>
+<a href="https://techhd.herokuapp.com/"><img src="images/ppt2.jpg" width="300"></a>
+<a href="https://techhd.herokuapp.com/"><img src="images/ppt3.jpg" width="300"></a>
+
+
+## 2. Depth Map Generation from stereo images
+<a href="https://techhd.herokuapp.com/"><img src="images/ppt4.jpg" width="300"></a>
+<a href="https://techhd.herokuapp.com/"><img src="images/ppt5.jpg" width="300"></a>
+<a href="https://techhd.herokuapp.com/"><img src="images/ppt6.png" width="300"></a>
+
+## 3. Feeding the information to the user via Jetson Nano
+<a href="https://techhd.herokuapp.com/"><img src="images/ppt7.png" width="300"></a>
+
+
+# Team Members
+Team Sahaay, Center For Innovation, IIT Madras
+1. **Vinayak Nishant Gudipaty**, 2nd year Electrical, IIT Madras
+2. **Yogesh Agarwala**, 2nd year Electrical, IIT Madras
+3. **Harshit Raj**, 2nd year Mechanical, IIT Madras
+4. **Saroopa G**, 2nd year Mechanical, IIT Madras
+5. **Anish Pophale**, 1st year Chemical, IIT Madras
