@@ -40,7 +40,7 @@ The ultimate goal is to make the life of the visually impaired easier by assisti
       cd Project-Vision
       make
       ```
-    - Download the pre-trained weight
+    - Download the pre-trained [weight](https://pjreddie.com/media/files/yolov3.weights)
       ```sh
       wget https://pjreddie.com/media/files/yolov3.weights
       ```
