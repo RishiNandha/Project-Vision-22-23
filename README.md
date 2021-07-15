@@ -73,7 +73,7 @@ The ultimate goal is to make the life of the visually impaired easier by assisti
 
  
 # Important Links
-**Yolo Code Credit: https://pjreddie.com/darknet/yolo/** <br>
+**Yolo Code Credit: https://github.com/pjreddie/darknet** <br>
 **View the glimpse of our project on Youtube : https://youtu.be/acc7wHFKoWU**
 
 # Team Members
