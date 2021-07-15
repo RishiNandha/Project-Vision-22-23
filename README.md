@@ -18,14 +18,14 @@ The ultimate goal is to make the life of the visually impaired easier by assisti
 <a href="https://youtu.be/acc7wHFKoWU"><img src="images/idea.jpg"></a>
 
 ## 1. Object Detection from Live Camera Feed
-<a href="https://techhd.herokuapp.com/"><img src="images/ppt1.jpg" width="300"></a>
-<a href="https://techhd.herokuapp.com/"><img src="images/ppt2.jpg" width="300"></a>
+<a href="https://techhd.herokuapp.com/"><img src="images/ppt1.jpg" width="300"></a><br>
+<a href="https://techhd.herokuapp.com/"><img src="images/ppt2.jpg" width="300"></a><br>
 <a href="https://techhd.herokuapp.com/"><img src="images/ppt3.jpg" width="300"></a>
 
 
 ## 2. Depth Map Generation from stereo images
-<a href="https://techhd.herokuapp.com/"><img src="images/ppt4.jpg" width="300"></a>
-<a href="https://techhd.herokuapp.com/"><img src="images/ppt5.jpg" width="300"></a>
+<a href="https://techhd.herokuapp.com/"><img src="images/ppt4.jpg" width="300"></a><br>
+<a href="https://techhd.herokuapp.com/"><img src="images/ppt5.jpg" width="300"></a><br>
 <a href="https://techhd.herokuapp.com/"><img src="images/ppt6.png" width="300"></a>
 
 ## 3. Feeding the information to the user via Jetson Nano
