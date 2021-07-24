@@ -63,11 +63,11 @@ def depth_map(imgL, imgR):
 """## 1. Finding Depth (Distance Matrix) for the whole Image """
 
 K1, D1, K2, D2, R, T, E, F, R1, R2, P1, P2, Q = load_stereo_coefficients(
-    "/content/drive/MyDrive/Project Vision 2021-2022 || Team Sahaay CFI/Colab/calibration_file.txt"
+    "calibration\calibration_file.txt"
 )  # Get cams params
 
-rightFrame = cv2.imread("/content/drive/MyDrive/Project Vision 2021-2022 || Team Sahaay CFI/Colab/right.jpeg", cv2.IMREAD_COLOR)
-leftFrame = cv2.imread("/content/drive/MyDrive/Project Vision 2021-2022 || Team Sahaay CFI/Colab/left.jpeg", cv2.IMREAD_COLOR)
+rightFrame = cv2.imread("images\right.jpeg", cv2.IMREAD_COLOR)
+leftFrame = cv2.imread("images\left.jpeg", cv2.IMREAD_COLOR)
 
 height, width, channel = leftFrame.shape  # We will use the shape for remap
 
@@ -99,7 +99,7 @@ focal = Q[2, 3] # Focal Length of the cameras
 # Distance = (base offset x focal length)/disp Formula
 distance = []
 
-infi = 10e15;count =0;
+infi = 10e15;count =0
 for i in range(disp_matrix.shape[0]):
   for j in range(disp_matrix.shape[1]): 
     if disp_matrix[i][j] == 0:
@@ -135,7 +135,7 @@ print(distance)
 
 """## 2. YOLO on the Right Image"""
 
-path_dir = '/content/drive/MyDrive/Project Vision 2021-2022 || Team Sahaay CFI/Colab/Project-Vision-master/Project-Vision-master'
+path_dir = 'yolo'
 #extracting network from yolov3.weights 
 net = cv2.dnn.readNet(f'{path_dir}/yolov3.weights' , f'{path_dir}/yolov3.cfg')
 
@@ -146,8 +146,8 @@ with open(f'{path_dir}/coco.names','r' ) as f:
 #VIDEO CAPTURE
 #cap = cv.VideoCapture(0)
 # BGR image loaded
-img = cv2.imread('/content/drive/MyDrive/Project Vision 2021-2022 || Team Sahaay CFI/Colab/right.jpeg')
-img_copy = cv2.imread('/content/drive/MyDrive/Project Vision 2021-2022 || Team Sahaay CFI/Colab/right.jpeg')
+img = cv2.imread('images\right.jpeg')
+img_copy = cv2.imread('images\right.jpeg')
 
 #while True:
 #_,img = cap.read()
