@@ -90,7 +90,7 @@ if __name__ == "__main__":
     cap_right = cv2.VideoCapture(2)
 
     K1, D1, K2, D2, R, T, E, F, R1, R2, P1, P2, Q = load_stereo_coefficients(
-        "calibration_file.txt"
+        "calibration\calibration_file.txt"
     )  # Get cams params
 
     if (
