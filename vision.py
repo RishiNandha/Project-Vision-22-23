@@ -135,11 +135,11 @@ print(distance)
 
 """## 2. YOLO on the Right Image"""
 
-import cv2 as cv
+import cv2
 import numpy as np
 path_dir = '/content/drive/MyDrive/Project Vision 2021-2022 || Team Sahaay CFI/Colab/Project-Vision-master/Project-Vision-master'
 #extracting network from yolov3.weights 
-net = cv.dnn.readNet(f'{path_dir}/yolov3.weights' , f'{path_dir}/yolov3.cfg')
+net = cv2.dnn.readNet(f'{path_dir}/yolov3.weights' , f'{path_dir}/yolov3.cfg')
 
 #extracting the name of objects
 with open(f'{path_dir}/coco.names','r' ) as f:
@@ -148,8 +148,8 @@ with open(f'{path_dir}/coco.names','r' ) as f:
 #VIDEO CAPTURE
 #cap = cv.VideoCapture(0)
 # BGR image loaded
-img = cv.imread('/content/drive/MyDrive/Project Vision 2021-2022 || Team Sahaay CFI/Colab/right.jpeg')
-img_copy = cv.imread('/content/drive/MyDrive/Project Vision 2021-2022 || Team Sahaay CFI/Colab/right.jpeg')
+img = cv2.imread('/content/drive/MyDrive/Project Vision 2021-2022 || Team Sahaay CFI/Colab/right.jpeg')
+img_copy = cv2.imread('/content/drive/MyDrive/Project Vision 2021-2022 || Team Sahaay CFI/Colab/right.jpeg')
 
 #while True:
 #_,img = cap.read()
@@ -157,7 +157,7 @@ img_copy = cv.imread('/content/drive/MyDrive/Project Vision 2021-2022 || Team Sa
 height,width,l = img.shape 
 
 #resize to RGB (0-1 scale) 416 image for yolo
-blob = cv.dnn.blobFromImage(img, 1/255 , (416,416),(0,0,0) , swapRB= True , crop = False)
+blob = cv2.dnn.blobFromImage(img, 1/255 , (416,416),(0,0,0) , swapRB= True , crop = False)
 
 #Model Input
 net.setInput(blob)
@@ -189,10 +189,10 @@ for output in layerOutputs:
             class_ids.append(class_id) 
 
 #Non-max supression
-indexes = cv.dnn.NMSBoxes(boxes , confidences ,0.3 ,0.4)
+indexes = cv2.dnn.NMSBoxes(boxes , confidences ,0.3 ,0.4)
 
 #font and different colours
-font = cv.FONT_HERSHEY_PLAIN 
+font = cv2.FONT_HERSHEY_PLAIN 
 colors = np.random.uniform(0,255 , size=(len(boxes),3))
 
 """## 3. Calculating Distance of the detected objects"""
@@ -215,19 +215,15 @@ for i in indexes.flatten():
     dist = sum/count
     print(f"{label} - {dist}\n")
     color = colors[i] 
-    cv.rectangle(img_copy , (top_leftX,top_leftY) , (top_leftX+width , top_leftY+height) , color , 2)
-    cv.putText(img_copy,label+" - " + f"{round(dist,2)}m", (top_leftX , top_leftY+20) , font , 1 ,(255,255,255),2)
+    cv2.rectangle(img_copy , (top_leftX,top_leftY) , (top_leftX+width , top_leftY+height) , color , 2)
+    cv2.putText(img_copy,label+" - " + f"{round(dist,2)}m", (top_leftX , top_leftY+20) , font , 1 ,(255,255,255),2)
     
 
-cv2_imshow(img_copy)  
+cv2.imshow(img_copy)  
 print(img_copy.shape) 
-key = cv.waitKey(0)
+key = cv2.waitKey(0)
 #if key == 27 :
  #     break
     
 #cap.release() 
-cv.destroyAllWindows()
-
-from google.colab import drive
-drive.mount('/content/drive')
-
+cv2.destroyAllWindows()
