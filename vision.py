@@ -11,7 +11,7 @@ import numpy as np
 import cv2
 import argparse
 import sys
-from google.colab.patches import cv2_imshow
+import numpy as np
 
 def load_stereo_coefficients(path):
     """ Loads stereo matrix coefficients. """
@@ -135,8 +135,6 @@ print(distance)
 
 """## 2. YOLO on the Right Image"""
 
-import cv2
-import numpy as np
 path_dir = '/content/drive/MyDrive/Project Vision 2021-2022 || Team Sahaay CFI/Colab/Project-Vision-master/Project-Vision-master'
 #extracting network from yolov3.weights 
 net = cv2.dnn.readNet(f'{path_dir}/yolov3.weights' , f'{path_dir}/yolov3.cfg')
