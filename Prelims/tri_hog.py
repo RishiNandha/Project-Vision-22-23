@@ -3,10 +3,12 @@ import numpy as np
 from matplotlib import pyplot as plt
 import os 
 
-L=cv.imread("left.png",0)
-R=cv.imread("right.png",0)
+os.chdir("..")
+os.chdir("images")
+L=cv.imread("left.jpeg",0)
+R=cv.imread("right.jpeg",0)
 
-stereo = cv.StereoBM_create(numDisparities=16, blockSize=5)
+stereo = cv.StereoBM_create(numDisparities=128, blockSize=13)
 disparity = stereo.compute(L,R)
 plt.imshow(disparity,'gray')
 plt.show()
