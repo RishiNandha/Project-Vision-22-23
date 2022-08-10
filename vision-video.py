@@ -7,9 +7,9 @@ import cv2
 import argparse
 import sys
 from  matplotlib import pyplot as plt
-import serial
+#import serial
 import time
-ser = serial.Serial('COM6',9600)
+#ser = serial.Serial('COM6',9600)
 
 # %% [markdown]
 # # 1. Cam Calibration
@@ -91,8 +91,8 @@ with open(f'{path_dir}/coco.names','r' ) as f:
     classes = f.read().splitlines()
 
 # %%
-capL = cv2.VideoCapture(1, cv2.CAP_DSHOW)
-capR = cv2.VideoCapture(2, cv2.CAP_DSHOW)
+capL = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+capR = cv2.VideoCapture(1, cv2.CAP_DSHOW)
 
 # %%
 for i in range(100):
@@ -271,19 +271,19 @@ for i in range(100):
             cv2.putText(img_copy,label+'-'+f'{round(dist,2)*0.7}', (top_leftX , top_leftY+20) , font , 1 ,(255,255,255),2)
         
         if(len(distance) == 0):
-            ser.write(b'00\n')
+            #ser.write(b'00\n')
             print(f'Both Off')
         else:
             X = centre[distance.index(min(distance))]
             print(f'X value of centre {X}')
             if(X >= mid):
-                ser.write(b'01\n')
+                #ser.write(b'01\n')
                 print(f'Right On')
             else:
-                ser.write(b'10\n')
+                #ser.write(b'10\n')
                 print(f'Left On')
     else:
-        ser.write(b'00\n')
+        #ser.write(b'00\n')
         print(f'Both Off')
     
 
