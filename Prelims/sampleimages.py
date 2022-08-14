@@ -6,12 +6,9 @@ import keyboard
 os.chdir("sampleimages")
 
 # Testing if Cameras are working
-
 def list_ports():
     is_working = True
     dev_port = 0
-    working_ports = []
-    available_ports = []
     while is_working:
         camera = cv.VideoCapture(dev_port)
         if not camera.isOpened():
@@ -23,12 +20,9 @@ def list_ports():
             h = camera.get(4)
             if is_reading:
                 print("Port %s is working and reads images (%s x %s)" %(dev_port,h,w))
-                working_ports.append(dev_port)
             else:
                 print("Port %s for camera ( %s x %s) is present but does not reads." %(dev_port,h,w))
-                available_ports.append(dev_port)
         dev_port +=1
-    return available_ports,working_ports
 list_ports()
 
 camL = cv.VideoCapture(0)
@@ -42,6 +36,7 @@ while(True):
 	# Display the resulting frame
 	cv.imshow('preview_L',frameL)
 	cv.imshow('preview_R', frameR)
+	cv.waitKey(1)
 	# Waits for a user input to quit the application
 	if keyboard.is_pressed('q'):
 		cv.destroyAllWindows()
@@ -58,15 +53,16 @@ while index>=0:
 	ax2.imshow(cv.cvtColor(imgR,cv.COLOR_BGR2RGB))
 	plt.show()
 
-	okay = int(input("Works? :"))
+	okay = int(input("Works? (1=Yes, 2=Invert, -1=Nope) : "))
 
 	# Writing
 
 	if okay==1:
 		cv.imwrite("L"+str(index)+".jpeg", imgL)
 		cv.imwrite("R"+str(index)+".jpeg", imgR)
-	else:
+	elif okay==2:
 		cv.imwrite("L"+str(index)+".jpeg", imgR)
 		cv.imwrite("R"+str(index)+".jpeg", imgL)
-
+	else:
+		continue
 	index=int(input("Index : "))
