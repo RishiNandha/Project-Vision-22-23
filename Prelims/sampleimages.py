@@ -63,6 +63,4 @@ while index>=0:
 	elif okay==2:
 		cv.imwrite("L"+str(index)+".jpeg", imgR)
 		cv.imwrite("R"+str(index)+".jpeg", imgL)
-	else:
-		continue
 	index=int(input("Index : "))
