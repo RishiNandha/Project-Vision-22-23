@@ -91,11 +91,11 @@ with open(f'{path_dir}/coco.names','r' ) as f:
     classes = f.read().splitlines()
 
 # %%
-capL = cv2.VideoCapture(0, cv2.CAP_DSHOW)
-capR = cv2.VideoCapture(1, cv2.CAP_DSHOW)
+capL = cv2.VideoCapture(1, cv2.CAP_DSHOW)
+capR = cv2.VideoCapture(0, cv2.CAP_DSHOW)
 
 # %%
-for i in range(100):
+for i in range(200):
     #rightFrame = cv2.imread("images/right.jpeg")
     #leftFrame = cv2.imread("images/left.jpeg", cv2.IMREAD_COLOR)
     if not (capL.grab() and capR.grab()):
