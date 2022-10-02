@@ -28,3 +28,4 @@ Thumbs.db
 
 __pycache__/
 yolov3.weights
+Prelims/detect_video.py
