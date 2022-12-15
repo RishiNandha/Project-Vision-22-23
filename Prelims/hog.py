@@ -6,8 +6,8 @@ import matplotlib.pyplot as plt
 import cv2 as cv
 import numpy as np
 
-address_L = 'tsukuba_l.jpeg'
-address_R = 'tsukuba_r.jpeg'
+address_L = 'left.jpeg'
+address_R = 'right.jpeg'
 
 imgR = imread(address_R)
 

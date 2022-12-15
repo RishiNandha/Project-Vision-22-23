@@ -1,0 +1,1 @@
+print("Find a binary sequence of length 14 such that each substring str[n] + str[n+3] + str[n+6] is unique")

@@ -82,20 +82,11 @@ def depth_map(imgL, imgR):
     return displ
 
 # %%
-path_dir = 'yolo'
-#extracting network from yolov3.weights 
-net = cv2.dnn.readNet(f'{path_dir}/yolov3.weights' , f'{path_dir}/yolov3.cfg')
-
-#extracting the name of objects
-with open(f'{path_dir}/coco.names','r' ) as f:
-    classes = f.read().splitlines()
-
-# %%
 capL = cv2.VideoCapture(1, cv2.CAP_DSHOW)
 capR = cv2.VideoCapture(0, cv2.CAP_DSHOW)
 
 # %%
-for i in range(200):
+while True:
     #rightFrame = cv2.imread("images/right.jpeg")
     #leftFrame = cv2.imread("images/left.jpeg", cv2.IMREAD_COLOR)
     if not (capL.grab() and capR.grab()):
