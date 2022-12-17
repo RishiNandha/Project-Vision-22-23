@@ -7,7 +7,7 @@ from  matplotlib import pyplot as plt
 import time
 
 import serial
-arduino=serial.Serial(port='COM3',baudrate=115200, timeout=.1)
+arduino=serial.Serial(port='COM3',baudrate=9600, timeout=.1)
 
 # # 1. Cam Calibration
 cv_file = cv2.FileStorage()

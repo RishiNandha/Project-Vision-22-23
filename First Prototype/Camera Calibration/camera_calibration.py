@@ -71,7 +71,7 @@ for filename in images:
                                           corners2, ret)
 
         cv2.imshow('img', image)
-
+    print(filename, ret)
 cv2.destroyAllWindows()
 
 h, w = image.shape[:2]

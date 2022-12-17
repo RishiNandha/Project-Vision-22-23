@@ -10,16 +10,12 @@ void setup() {
 
   Left.attach(11);
   Right.attach(9);
-
-  pinMode(2, OUTPUT);
-  digitalWrite(2,HIGH);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  digitalWrite(2,HIGH);
   while(!Serial.available()){
-    x = Serial.readString().toInt();
+    x = Serial.parseInt();
   }
   if (x==11){
       Left.write(0);
@@ -37,5 +33,6 @@ void loop() {
       Left.write(0);
       Right.write(0);
     }
+    delay(1000);
   
 }
