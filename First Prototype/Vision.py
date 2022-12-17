@@ -7,11 +7,11 @@ from  matplotlib import pyplot as plt
 import time
 
 import serial
-arduino=serial.Serial(port='COM3',baudrate=9600, timeout=.1)
+arduino=serial.Serial(port='COM7',baudrate=9600, timeout=.1)
 
 # # 1. Cam Calibration
 cv_file = cv2.FileStorage()
-cv_file.open('Camera Cailbration/stereoMap.xml', cv2.FileStorage_READ)
+cv_file.open('Camera Calibration/stereoMap.xml', cv2.FileStorage_READ)
 
 stereoMapL_x = cv_file.getNode('stereoMapL_x').mat()
 stereoMapL_y = cv_file.getNode('stereoMapL_y').mat()
@@ -58,8 +58,17 @@ def depth_map(imgL, imgR):
     displ = left_matcher.compute(imgL, imgR).astype(np.float32) / 16
     return displ
 
+path_dir = 'yolo'
+#extracting network from yolov3.weights 
+net = cv2.dnn.readNet(f'{path_dir}/yolov3.weights' , f'{path_dir}/yolov3.cfg')
+
+#extracting the name of objects
+with open(f'{path_dir}/coco.names','r' ) as f:
+    classes = f.read().splitlines()
+
+
 capL = cv2.VideoCapture(1, cv2.CAP_DSHOW)
-capR = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+capR = cv2.VideoCapture(2, cv2.CAP_DSHOW)
 while True:
     if not (capL.grab() and capR.grab()):
         print("No more frames")
@@ -115,7 +124,7 @@ while True:
     """
     distance_matrix = []
     base =  0.055 # 1 / Q[3, 2] base offset (distance between the two cameras)
-    focal = Q[2, 3] # Focal Length of the cameras
+    focal = 3 # Focal Length of the cameras
 
     infi = 10e15;count =0
     for i in range(disp_matrix.shape[0]):
