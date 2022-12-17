@@ -16,38 +16,21 @@ def nothing(x):
     pass
 # %%
 cv2.namedWindow('disp',cv2.WINDOW_NORMAL)
-def load_stereo_coefficients(path):
+cv_file = cv2.FileStorage()
+cv_file.open('stereoMap.xml', cv2.FileStorage_READ)
 
-    # Loads stereo matrix coefficients. 
-    
-    # FILE_STORAGE_READ
-    cv_file = cv2.FileStorage(path, cv2.FILE_STORAGE_READ)
+stereoMapL_x = cv_file.getNode('stereoMapL_x').mat()
+stereoMapL_y = cv_file.getNode('stereoMapL_y').mat()
+stereoMapR_x = cv_file.getNode('stereoMapR_x').mat()
+stereoMapR_y = cv_file.getNode('stereoMapR_y').mat()
+def undistortRectify(frameR, frameL):
 
-    # note we also have to specify the type to retrieve other wise we only get a
-    # FileNode object back instead of a matrix
-    K1 = cv_file.getNode("K1").mat()
-    D1 = cv_file.getNode("D1").mat()
-    K2 = cv_file.getNode("K2").mat()
-    D2 = cv_file.getNode("D2").mat()
-    R = cv_file.getNode("R").mat()
-    T = cv_file.getNode("T").mat()
-    E = cv_file.getNode("E").mat()
-    F = cv_file.getNode("F").mat()
-    R1 = cv_file.getNode("R1").mat()
-    R2 = cv_file.getNode("R2").mat()
-    P1 = cv_file.getNode("P1").mat()
-    P2 = cv_file.getNode("P2").mat()
-    Q = cv_file.getNode("Q").mat()
+    # Undistort and rectify images
+    undistortedL= cv2.remap(frameL, stereoMapL_x, stereoMapL_y, cv2.INTER_LANCZOS4, cv2.BORDER_CONSTANT, 0)
+    undistortedR= cv2.remap(frameR, stereoMapR_x, stereoMapR_y, cv2.INTER_LANCZOS4, cv2.BORDER_CONSTANT, 0)
 
-    cv_file.release()
-    return [K1, D1, K2, D2, R, T, E, F, R1, R2, P1, P2, Q]
 
-# %%
-K1, D1, K2, D2, R, T, E, F, R1, R2, P1, P2, Q = load_stereo_coefficients(
-    "calibration/calibration_file.txt"
-)  # Get cams params
-
-print(K1,D1,K2,D2,R, T, E, F, R1, R2, P1, P2, Q)
+    return undistortedR, undistortedL
 # %% [markdown]
 # # 2. Finding the distance of each pixel of the image
 cv2.createTrackbar('numDisparities','disp',1,17,nothing)
@@ -125,18 +108,7 @@ while True:
     """
     Undistortion and Rectification part! Undistorts and Rectifies the images using the Calibration codes
     """
-    leftMapX, leftMapY = cv2.initUndistortRectifyMap(
-        K1, D1, R1, P1, (width, height), cv2.CV_32FC1
-    )
-    left_rectified = cv2.remap(
-        leftFrame, leftMapX, leftMapY, cv2.INTER_LINEAR, cv2.BORDER_CONSTANT
-    )
-    rightMapX, rightMapY = cv2.initUndistortRectifyMap(
-        K2, D2, R2, P2, (width, height), cv2.CV_32FC1
-    )
-    right_rectified = cv2.remap(
-        rightFrame, rightMapX, rightMapY, cv2.INTER_LINEAR, cv2.BORDER_CONSTANT
-    )
+    left_rectified, right_rectified = undistortRectify(leftFrame, rightFrame)
 
     # print("After rectification: ")
     # plotting
@@ -175,16 +147,14 @@ while True:
     stereo.setDisp12MaxDiff(disp12MaxDiff)
     stereo.setMinDisparity(minDisparity)
     # Calculating disparity using the StereoBM algorithm
-    T=time.time()
     disparity = stereo.compute(L,R)
-    print(time.time()-T)
     # NOTE: Code returns a 16bit signed single channel image,
     # CV_16S containing a disparity map scaled by 16. Hence it 
     # is essential to convert it to CV_32F and scale it down 16 time.time()s.
 
     # Converting to float32 
-    disparity = disparity.astype(np.float32)
-
+    disparity = disparity.astype(np.float32)/255
+    cv2.imshow("BGM",disparity)
     # Scaling down the disparity values and normalizing them 
     disparity = (disparity/16.0 - minDisparity)/numDisparities
 
