@@ -7,7 +7,7 @@ from  matplotlib import pyplot as plt
 import time
 
 import serial
-arduino=serial.Serial(port='COM7',baudrate=9600, timeout=.1)
+arduino=serial.Serial(port='COM7',baudrate=9600)
 
 # # 1. Cam Calibration
 cv_file = cv2.FileStorage()
@@ -239,10 +239,10 @@ while True:
             if(X >= mid):
                 #ser.write(b'01\n')
                 print(f'Right On')
-                arduino.write(bytes('00', 'utf-8'))
+                arduino.write(bytes('01', 'utf-8'))
             else:
                 #ser.write(b'10\n')
-                arduino.write(bytes('00', 'utf-8'))
+                arduino.write(bytes('10', 'utf-8'))
                 print(f'Left On')
     else:
         #ser.write(b'00\n')

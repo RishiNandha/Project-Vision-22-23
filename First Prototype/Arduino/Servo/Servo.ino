@@ -6,10 +6,9 @@ int x;
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
-  Serial.setTimeout(1);
 
   Left.attach(11);
-  Right.attach(9);
+  Right.attach(8);
 }
 
 void loop() {
