@@ -5,7 +5,7 @@ Servo Right;
 int x;
 void setup() {
   // put your setup code here, to run once:
-  Serial.begin(115200);
+  Serial.begin(9600);
   Serial.setTimeout(1);
 
   Left.attach(11);
@@ -14,9 +14,9 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  while(!Serial.available()){
-    x = Serial.parseInt();
+  while(Serial.available()==0){
   }
+  x = Serial.parseInt();
   if (x==11){
       Left.write(0);
       Right.write(0);
@@ -33,6 +33,6 @@ void loop() {
       Left.write(0);
       Right.write(0);
     }
-    delay(1000);
+    delay(10);
   
 }
