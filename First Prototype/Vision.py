@@ -8,10 +8,12 @@ import time
 
 import serial
 arduino=serial.Serial(port='COM8',baudrate=9600)
-
 # # 1. Cam Calibration
 cv_file = cv2.FileStorage()
 cv_file.open('Camera Calibration/stereoMap.xml', cv2.FileStorage_READ)
+
+state_old='00'
+state='00'
 
 stereoMapL_x = cv_file.getNode('stereoMapL_x').mat()
 stereoMapL_y = cv_file.getNode('stereoMapL_y').mat()
@@ -204,7 +206,7 @@ while True:
             label = str(classes[class_ids[i]]) #name of the object
             confidence = str(round(confidences[i],2)) #confidence of the object
             #print (i , " : " , label , " : " , confidence )
-            print ("detected object: ", label)
+            # print ("detected object: ", label)
             #print ("confidence: " , confidence)
             #print( "x-coordinate: " , top_leftX , "\t" , "y-coordinate:indexes" , top_leftY)
             #print("width: " , width , "\t" , "height: " , height)
@@ -232,24 +234,28 @@ while True:
             cv2.putText(img_copy,label+'-'+f'{round(dist,2)*0.7}', (top_leftX , top_leftY+20) , font , 1 ,(255,255,255),2)
         
         if(len(distance) == 0):
-            arduino.write(bytes('00', 'utf-8'))
+            #arduino.write(bytes('00', 'utf-8'))
+            state='00'
             print(f'Both Off')
         else:
             X = centre[distance.index(min(distance))]
-            print(f'X value of centre {X}')
+            # print(f'X value of centre {X}')
             if(X >= mid):
-                #ser.write(b'01\n')
+                state='01'
                 print(f'Right On')
-                arduino.write(bytes('01', 'utf-8'))
+                # arduino.write(bytes('01', 'utf-8'))
             else:
-                #ser.write(b'10\n')
-                arduino.write(bytes('10', 'utf-8'))
+                state='10'
+                # arduino.write(bytes('10', 'utf-8'))
                 print(f'Left On')
     else:
         #ser.write(b'00\n')
         print(f'Both Off')
-        arduino.write(bytes('00', 'utf-8'))
-            
+        state='00'
+           
+    if state!=state_old:
+        arduino.write(bytes(state, 'utf-8'))
+        state_old=state
 
     # cv2.imshow(img_copy) 
     # cv2.waitKey(0)
