@@ -7,7 +7,7 @@ from  matplotlib import pyplot as plt
 import time
 
 import serial
-arduino=serial.Serial(port='COM7',baudrate=9600)
+arduino=serial.Serial(port='COM8',baudrate=9600)
 
 # # 1. Cam Calibration
 cv_file = cv2.FileStorage()
@@ -77,8 +77,7 @@ while True:
     _, leftFrame = capL.read()
     _, rightFrame = capR.read()
 
-    cv2.imshow("capL", leftFrame)
-    cv2.imshow("capR", rightFrame)
+
 
     height, width, channel = leftFrame.shape  # We will use the shape for remap
 
@@ -116,7 +115,7 @@ while True:
 
     # print("Depth map:")
     # plt.figure(figsize=(15, 4.5))
-    cv2.imshow('Depth Map:',cv2.cvtColor(disp_matrix, cv2.COLOR_BGR2RGB))
+    # cv2.imshow('Depth Map:',cv2.cvtColor(disp_matrix, cv2.COLOR_BGR2RGB))
     # plt.show()
 
     """
@@ -199,14 +198,16 @@ while True:
     #Drawing Rectangles
     if(len(indexes) != 0):
         for i in indexes.flatten():
+            if str(classes[class_ids[i]])=='tvmonitor':
+                continue
             top_leftX,top_leftY,width,height = boxes[i] 
             label = str(classes[class_ids[i]]) #name of the object
             confidence = str(round(confidences[i],2)) #confidence of the object
             #print (i , " : " , label , " : " , confidence )
             print ("detected object: ", label)
-            print ("confidence: " , confidence)
-            print( "x-coordinate: " , top_leftX , "\t" , "y-coordinate:indexes" , top_leftY)
-            print("width: " , width , "\t" , "height: " , height)
+            #print ("confidence: " , confidence)
+            #print( "x-coordinate: " , top_leftX , "\t" , "y-coordinate:indexes" , top_leftY)
+            #print("width: " , width , "\t" , "height: " , height)
             sum =0; count=1; flag=1
 
             for x in range(top_leftY,min(top_leftY+height,480)):
@@ -222,7 +223,7 @@ while True:
             mid = 320
             
             if(label == "person"):
-                centreX = (width + (top_leftX/2))
+                centreX = (width/2 + (top_leftX))
                 centre.append(centreX)
                 distance.append(dist)
 
