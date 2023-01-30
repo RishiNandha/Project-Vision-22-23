@@ -7,7 +7,7 @@ from  matplotlib import pyplot as plt
 import time
 
 import serial
-arduino=serial.Serial(port='COM8',baudrate=9600)
+arduino=serial.Serial(port='COM3',baudrate=9600)
 # # 1. Cam Calibration
 cv_file = cv2.FileStorage()
 cv_file.open('Camera Calibration/stereoMap.xml', cv2.FileStorage_READ)
