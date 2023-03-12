@@ -12,7 +12,9 @@ arduino=serial.Serial(port='COM3',baudrate=9600)
 #cv_file = cv2.FileStorage()
 #cv_file.open('Camera Calibration/stereoMap.xml', cv2.FileStorage_READ)
 
-state_old='00'
+delay = 3
+
+state_old=['00' for i in range(delay)]
 state='00'
 
 #stereoMapL_x = cv_file.getNode('stereoMapL_x').mat()
@@ -252,10 +254,11 @@ while True:
         print(f'Both Off')
         state='00'
            
-    if state!=state_old:
+    if state not in state_old:
         arduino.write(bytes(state, 'utf-8'))
-        state_old=state
-
+    
+    state_old=state_old[1:]+[state,]
+    
     # cv2.imshow(img_copy) 
     # cv2.waitKey(0)
     # cv2.destroyAllWindows()
