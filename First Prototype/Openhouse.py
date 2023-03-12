@@ -201,7 +201,7 @@ while True:
     #Drawing Rectangles
     if(len(indexes) != 0):
         for i in indexes.flatten():
-            if str(classes[class_ids[i]])=='tvmonitor':
+            if str(classes[class_ids[i]])!='person':
                 continue
             top_leftX,top_leftY,width,height = boxes[i] 
             label = str(classes[class_ids[i]]) #name of the object
