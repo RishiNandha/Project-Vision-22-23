@@ -18,19 +18,19 @@ void loop() {
   x = Serial.parseInt();
   if (x==11){
       Left.write(0);
-      Right.write(0);
+      Right.write(180);
     }
     else if(x==01){
       Left.write(0);
-      Right.write(180);
+      Right.write(0);
     }
     else if(x==10){
       Left.write(180);
-      Right.write(0);
+      Right.write(180);
     }
     else {
       Left.write(0);
-      Right.write(0);
+      Right.write(180);
     }
     delay(10);
   
